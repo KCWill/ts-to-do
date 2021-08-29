@@ -31,6 +31,9 @@ const CreateToDos: FC<Props> = ({ addTitle, toDoTitle, addedTasks, addNewTask })
         <input type='text' name='title' onChange={addTitle}></input>
         {displayTaskAdder()}
       </form>
+      <div>
+        <h2>{toDoTitle}</h2>
+      </div>
     </div>
   )
 }
