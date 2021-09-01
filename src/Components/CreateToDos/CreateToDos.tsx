@@ -1,28 +1,38 @@
 import React, { FC, useState } from 'react';
-
+import { Task } from '../App/App';
 
 type Props = {
   addTitle: any;
-  addedTasks: string[];
+  addedTasks: Task[];
   addNewTask: any;
   toDoTitle: string;
 }
 
 const CreateToDos: FC<Props> = ({ addTitle, toDoTitle, addedTasks, addNewTask }) => {
   const displayTaskAdder = () => {
-    if (!addedTasks.length){
+   {
       return(
         <div>
           <form>
             <label htmlFor='newToDo'>New To Do:</label>
             <input type='text' name='newTask' placeholder='Add first task'></input>
-            <button type='submit' onSubmit={addNewTask}>Save Task</button>
+            <button type='submit' onClick={addNewTask}>Save Task</button>
           </form>
-          <button>Add new task</button>
+
         </div>
       )
     }
 
+  }
+  const displayAddedTasks = () => {
+    const tasks = addedTasks.map((task) => {
+      return (
+        <div> 
+          <p>{task.title}</p>
+        </div>
+      )
+    })
+    return tasks 
   }
   return (
     <div>

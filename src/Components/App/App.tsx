@@ -3,9 +3,13 @@ import ToDos from '../ToDos/ToDos';
 import { useState, useEffect, FormEvent } from 'react';
 import CreateToDos from '../CreateToDos/CreateToDos';
 
+
+export type Task = {
+  title: string;
+}
 const App = () => {
   const [ toDoTitle, setToDoTitle ] = useState('');
-  const [ addedTasks, setAddedTasks ] = useState([]);
+  const [ addedTasks, setAddedTasks ] = useState([] as Task[]);
 
   const addTitle = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -16,7 +20,7 @@ const App = () => {
   const addNewTask = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const input = event.currentTarget.value;
-    setAddedTasks(input)
+    setAddedTasks([...addedTasks, input])
   }
 
   return (
